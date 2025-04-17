@@ -11,11 +11,22 @@
             padding: 50px;
         }
         h3 {
-            color: rgb(0, 123, 255);
+            transition: color 0.5s ease;
         }
     </style>
 </head>
 <body>
-    <h3>ANH MÀY LÀ NHẤT OK CHƯA</h3>
+    <h3 id="rainbowText">ANH MÀY LÀ NHẤT OK CHƯA</h3>
+
+    <script>
+        const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+        let i = 0;
+        const text = document.getElementById("rainbowText");
+
+        setInterval(() => {
+            text.style.color = colors[i];
+            i = (i + 1) % colors.length;
+        }, 500); // đổi màu mỗi 0.5 giây
+    </script>
 </body>
 </html>
