@@ -11,7 +11,8 @@
             padding: 50px;
         }
         h3 {
-            transition: color 0.1s linear;
+            font-size: 2em;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -20,23 +21,15 @@
 
     <script>
         const text = document.getElementById("rgbText");
-        let r = 255, g = 0, b = 0;
-        let step = 1;
+        let hue = 0;
 
-        function updateColor() {
-            // RGB transition logic
-            if (r === 255 && g < 255 && b === 0) g += step;
-            else if (g === 255 && r > 0 && b === 0) r -= step;
-            else if (g === 255 && b < 255 && r === 0) b += step;
-            else if (b === 255 && g > 0 && r === 0) g -= step;
-            else if (b === 255 && r < 255 && g === 0) r += step;
-            else if (r === 255 && b > 0 && g === 0) b -= step;
-
-            text.style.color = `rgb(${r}, ${g}, ${b})`;
-            requestAnimationFrame(updateColor);
+        function animateColor() {
+            hue = (hue + 1) % 360;
+            text.style.color = `hsl(${hue}, 100%, 50%)`;
+            requestAnimationFrame(animateColor);
         }
 
-        updateColor();
+        animateColor();
     </script>
 </body>
 </html>
